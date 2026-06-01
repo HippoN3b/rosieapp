@@ -180,6 +180,21 @@ app.post('/webhook', express.raw({ type: 'application/json' }), async (req, res)
   res.json({ received: true });
 });
 
+app.post('/cancel', async (req, res) => {
+  const { deviceId } = req.body;
+  if (!deviceId) return res.status(400).json({ error: 'deviceId required' });
+  try {
+    const user = getUser(deviceId);
+    if (!user.stripeSubscriptionId) return res.status(400).json({ error: 'No active subscription' });
+    await stripe.subscriptions.cancel(user.stripeSubscriptionId);
+    updateUser(deviceId, { isPaid: false, stripeSubscriptionId: null });
+    res.json({ success: true });
+  } catch(err) {
+    console.error('Cancel error:', err);
+    res.status(500).json({ error: 'Failed to cancel subscription' });
+  }
+});
+
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
 const PORT = process.env.PORT || 3000;
