@@ -115,6 +115,7 @@ app.post('/subscribe', async (req, res) => {
       payment_method_types: ['card'],
       mode: 'subscription',
       line_items: [{ price: process.env.STRIPE_PRICE_ID, quantity: 1 }],
+      allow_promotion_codes: true,
       success_url: `${process.env.APP_URL}/success?session_id={CHECKOUT_SESSION_ID}&deviceId=${deviceId}`,
       cancel_url: `${process.env.APP_URL}/cancel`,
       metadata: { deviceId }
