@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Terms of Service — Rosie</title>
+<meta name="description" content="The terms of service for Rosie, the friendly computer helper for your family."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf8f1;
+    --paper: #fffdf9;
+    --ink: #3a332c;
+    --soft-ink: #6b6258;
+    --rosie: #e8736a;
+    --rosie-deep: #d15850;
+    --sun: #f4b860;
+    --border: #ece2d4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* warm soft background texture */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(244,184,96,0.12), transparent 40%),
+      radial-gradient(circle at 88% 18%, rgba(232,115,106,0.10), transparent 42%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 56px 24px 36px;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 28px;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto 80px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 56px 56px 64px;
+    box-shadow: 0 24px 60px -28px rgba(58,51,44,0.22);
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 46px;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+
+  .updated {
+    color: var(--soft-ink);
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .intro {
+    font-size: 20px;
+    color: var(--soft-ink);
+    background: var(--cream);
+    border-left: 4px solid var(--sun);
+    border-radius: 0 14px 14px 0;
+    padding: 20px 24px;
+    margin-bottom: 44px;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 27px;
+    margin: 44px 0 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  h2 .num {
+    color: var(--rosie);
+    font-size: 19px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  p { margin-bottom: 16px; }
+
+  ul { margin: 0 0 16px 4px; padding-left: 24px; }
+  li { margin-bottom: 10px; }
+
+  a { color: var(--rosie-deep); font-weight: 600; }
+
+  strong { color: var(--ink); font-weight: 700; }
+
+  .callout {
+    background: linear-gradient(180deg, #fff6f2, #fff);
+    border: 1px solid #f6dcd6;
+    border-radius: 16px;
+    padding: 22px 26px;
+    margin: 24px 0;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout strong { color: var(--rosie-deep); }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 24px 70px;
+    color: var(--soft-ink);
+    font-size: 16px;
+  }
+  footer a { color: var(--rosie-deep); }
+  .backlink {
+    display: inline-block;
+    margin-bottom: 16px;
+    text-decoration: none;
+  }
+  .backlink:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    body { font-size: 18px; }
+    .wrap { margin: 0 16px 56px; padding: 36px 26px 44px; border-radius: 22px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 23px; }
+    .intro { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo"><span>🌸</span> Rosie</a>
+</header>
+
+<main class="wrap">
+  <h1>Terms of Service</h1>
+  <p class="updated">Last updated: June 2, 2026</p>
+
+  <div class="intro">
+    Welcome! These terms explain the simple rules for using Rosie. We've tried to write them
+    in plain English with no confusing legal jargon. By using Rosie, you're agreeing to what's below.
+  </div>
+
+  <h2><span class="num">1</span> What Rosie is</h2>
+  <p>
+    Rosie is a friendly assistant that lives on your computer and answers your tech questions in
+    plain, everyday language. Rosie is powered by artificial intelligence (AI) — meaning a computer
+    program writes the answers, not a live person.
+  </p>
+  <p>
+    Rosie is here to help and explain things gently, but Rosie is not a replacement for a professional
+    when something serious is going on with your money, your health, or your security.
+  </p>
+
+  <h2><span class="num">2</span> Your free trial</h2>
+  <p>
+    Everyone gets to ask Rosie <strong>3 questions for free</strong>, no payment needed. This lets you
+    try Rosie out and see if she's a good fit before deciding anything. After your free questions are
+    used up, you'll be invited to subscribe to keep chatting.
+  </p>
+
+  <h2><span class="num">3</span> Subscription &amp; billing</h2>
+  <p>
+    Rosie costs <strong>$7.99 per month</strong>. When you subscribe, here's what you should know:
+  </p>
+  <ul>
+    <li>Payments are handled securely through Stripe, a trusted payment company. We never see or store your full card number.</li>
+    <li>Your subscription renews automatically each month so you don't have to think about it.</li>
+    <li>You'll be charged on the same date each month until you decide to cancel.</li>
+    <li>Prices may change in the future, but we'll always let you know before any change affects you.</li>
+  </ul>
+
+  <h2><span class="num">4</span> Canceling is easy</h2>
+  <p>
+    You can cancel anytime, right inside the Rosie app — there are no contracts and no cancellation
+    fees. When you cancel, your subscription ends immediately and you won't be charged again. Please
+    note that your access to Rosie stops at the moment you cancel rather than continuing to the end
+    of the month.
+  </p>
+  <p>
+    Because Rosie is a digital service you can use right away, we generally don't offer refunds for
+    time already passed. If something went wrong, though, please email us — we're reasonable people
+    and we want you to be happy.
+  </p>
+
+  <h2><span class="num">5</span> Using Rosie kindly</h2>
+  <p>When you use Rosie, you agree to a few common-sense things:</p>
+  <ul>
+    <li>Use Rosie for your own personal help, not to break the law or harm others.</li>
+    <li>Don't try to copy, resell, or take apart the Rosie software.</li>
+    <li>Don't use Rosie to send spam, abuse, or anything illegal.</li>
+    <li>Keep your account for yourself — please don't share it widely.</li>
+  </ul>
+
+  <div class="callout">
+    <p><strong>Please remember:</strong> Rosie does her best, but AI can sometimes get things wrong
+    or misunderstand. Always double-check before doing anything important — especially anything
+    involving your bank, passwords, personal information, or money. When in doubt, ask a trusted
+    family member or a professional before acting.</p>
+  </div>
+
+  <h2><span class="num">6</span> Your privacy</h2>
+  <p>
+    We take your privacy seriously and only collect what we need to make Rosie work. The details of
+    what we collect and how we protect it are explained in our
+    <a href="/privacy">Privacy Policy</a>. By using Rosie, you're also agreeing to that policy.
+  </p>
+
+  <h2><span class="num">7</span> When Rosie isn't available</h2>
+  <p>
+    We work hard to keep Rosie running smoothly, but sometimes the service may be down for
+    maintenance, updates, or reasons outside our control. We can't promise Rosie will be available
+    every single moment, and we're not responsible for occasional interruptions.
+  </p>
+
+  <h2><span class="num">8</span> Our responsibility</h2>
+  <p>
+    Rosie is provided "as is." While we genuinely care about helping you, we can't be held legally
+    responsible for any losses, damages, or decisions that result from using Rosie or relying on her
+    answers. To the fullest extent the law allows, our total responsibility to you is limited to the
+    amount you paid us in the past month.
+  </p>
+
+  <h2><span class="num">9</span> Changes to these terms</h2>
+  <p>
+    Sometimes we may need to update these terms — for example, if we add new features. When we make
+    an important change, we'll let you know. Continuing to use Rosie after a change means you accept
+    the updated terms.
+  </p>
+
+  <h2><span class="num">10</span> Getting in touch</h2>
+  <p>
+    Have a question about any of this? We're happy to hear from you. Email us anytime at
+    <a href="mailto:hello@meetrosie.app">hello@meetrosie.app</a> and a real person will reply.
+  </p>
+</main>
+
+<footer>
+  <a href="/" class="backlink">← Back to Rosie</a><br>
+  © 2026 Rosie. Made with care for families everywhere.
+</footer>
+
+</body>
+</html>

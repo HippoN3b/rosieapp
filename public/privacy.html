@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy Policy — Rosie</title>
+<meta name="description" content="The privacy policy for Rosie, the friendly computer helper for your family."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf8f1;
+    --paper: #fffdf9;
+    --ink: #3a332c;
+    --soft-ink: #6b6258;
+    --rosie: #e8736a;
+    --rosie-deep: #d15850;
+    --sun: #f4b860;
+    --border: #ece2d4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 19px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(244,184,96,0.12), transparent 40%),
+      radial-gradient(circle at 88% 18%, rgba(232,115,106,0.10), transparent 42%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 56px 24px 36px;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 28px;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto 80px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 56px 56px 64px;
+    box-shadow: 0 24px 60px -28px rgba(58,51,44,0.22);
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 46px;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+
+  .updated {
+    color: var(--soft-ink);
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .intro {
+    font-size: 20px;
+    color: var(--soft-ink);
+    background: var(--cream);
+    border-left: 4px solid var(--sun);
+    border-radius: 0 14px 14px 0;
+    padding: 20px 24px;
+    margin-bottom: 44px;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 27px;
+    margin: 44px 0 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  h2 .num {
+    color: var(--rosie);
+    font-size: 19px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  p { margin-bottom: 16px; }
+
+  ul { margin: 0 0 16px 4px; padding-left: 24px; }
+  li { margin-bottom: 10px; }
+
+  a { color: var(--rosie-deep); font-weight: 600; }
+
+  strong { color: var(--ink); font-weight: 700; }
+
+  .callout {
+    background: linear-gradient(180deg, #fff6f2, #fff);
+    border: 1px solid #f6dcd6;
+    border-radius: 16px;
+    padding: 22px 26px;
+    margin: 24px 0;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout strong { color: var(--rosie-deep); }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 24px 70px;
+    color: var(--soft-ink);
+    font-size: 16px;
+  }
+  footer a { color: var(--rosie-deep); }
+  .backlink {
+    display: inline-block;
+    margin-bottom: 16px;
+    text-decoration: none;
+  }
+  .backlink:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    body { font-size: 18px; }
+    .wrap { margin: 0 16px 56px; padding: 36px 26px 44px; border-radius: 22px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 23px; }
+    .intro { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">Rosie</a>
+</header>
+
+<main class="wrap">
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: June 2, 2026</p>
+
+  <div class="intro">
+    Your privacy matters to us. This page explains, in plain English, what information Rosie
+    collects, why we collect it, and how we keep it safe. We've kept things simple on purpose.
+  </div>
+
+  <h2><span class="num">1</span> The short version</h2>
+  <p>
+    We only collect what we need to make Rosie work — like the questions you ask and a small ID that
+    remembers your subscription. We never sell your information, and we never share it with anyone
+    except the trusted companies that help us run Rosie. That's the heart of it. The details are below.
+  </p>
+
+  <h2><span class="num">2</span> What we collect</h2>
+  <ul>
+    <li><strong>Your questions and Rosie's answers.</strong> When you ask Rosie something, we process your question so Rosie can write a helpful reply.</li>
+    <li><strong>A device ID.</strong> Rosie creates a small private code for your computer. This is how we keep track of your free questions and whether you're subscribed. It is not your name or anything personal.</li>
+    <li><strong>Payment details.</strong> If you subscribe, our payment partner Stripe collects your card information to process the payment. We never see or store your full card number.</li>
+    <li><strong>Basic technical information.</strong> Like most apps, we may note things such as when Rosie was used or whether something went wrong, so we can keep the service running smoothly.</li>
+  </ul>
+
+  <h2><span class="num">3</span> How Rosie answers your questions</h2>
+  <p>
+    To give you helpful answers, the questions you type are sent securely to our artificial
+    intelligence provider, which generates Rosie's reply. This is the same technology that powers
+    Rosie's friendly, plain-language responses. Your question is used to create your answer — not to
+    advertise to you or build a profile about you.
+  </p>
+
+  <div class="callout">
+    <p><strong>A gentle reminder:</strong> Because your questions are processed to create answers,
+    please avoid typing sensitive details like full bank account numbers, passwords, or Social
+    Security numbers into Rosie. Rosie never needs that information to help you.</p>
+  </div>
+
+  <h2><span class="num">4</span> How we use your information</h2>
+  <p>We use the information we collect only to:</p>
+  <ul>
+    <li>Answer your questions and make Rosie work the way you expect.</li>
+    <li>Keep track of your free questions and your subscription.</li>
+    <li>Process your payments safely.</li>
+    <li>Fix problems, improve Rosie, and keep the service reliable.</li>
+    <li>Reply to you if you contact us for help.</li>
+  </ul>
+
+  <h2><span class="num">5</span> Who we share with</h2>
+  <p>
+    We do <strong>not</strong> sell your information to anyone, ever. We only share what's necessary
+    with a small number of trusted companies that help us run Rosie:
+  </p>
+  <ul>
+    <li><strong>Our AI provider</strong> — to generate Rosie's answers to your questions.</li>
+    <li><strong>Stripe</strong> — to securely handle subscription payments.</li>
+    <li><strong>Our hosting provider</strong> — the service that runs Rosie's behind-the-scenes computers.</li>
+  </ul>
+  <p>
+    Each of these companies is only allowed to use your information to provide their service to us.
+    We may also share information if the law requires it, or to protect the safety of our users.
+  </p>
+
+  <h2><span class="num">6</span> How long we keep things</h2>
+  <p>
+    We keep your information only as long as we need it to provide Rosie to you. If you cancel and no
+    longer use Rosie, you can ask us to delete your information and we'll take care of it. Some basic
+    records may be kept longer if the law requires it (for example, billing records).
+  </p>
+
+  <h2><span class="num">7</span> Keeping your information safe</h2>
+  <p>
+    We use reasonable, industry-standard measures to protect your information, such as secure
+    connections and trusted payment processing. No system on the internet is ever 100% secure, but we
+    take your privacy seriously and work to keep your information protected.
+  </p>
+
+  <h2><span class="num">8</span> Your choices and rights</h2>
+  <p>You're always in control of your information. You can:</p>
+  <ul>
+    <li>Ask us what information we have about you.</li>
+    <li>Ask us to correct or delete your information.</li>
+    <li>Cancel your subscription at any time, right inside the Rosie app.</li>
+  </ul>
+  <p>
+    Just email us at <a href="mailto:hello@meetrosie.app">hello@meetrosie.app</a> and a real person
+    will help you.
+  </p>
+
+  <h2><span class="num">9</span> Rosie is for grown-ups</h2>
+  <p>
+    Rosie is made for adults and is not intended for children under 13. We don't knowingly collect
+    information from children. If you believe a child has used Rosie, please contact us and we'll
+    remove their information.
+  </p>
+
+  <h2><span class="num">10</span> Changes to this policy</h2>
+  <p>
+    If we update this privacy policy, we'll change the date at the top, and we'll let you know if it's
+    an important change. Continuing to use Rosie after an update means you accept the new policy.
+  </p>
+
+  <h2><span class="num">11</span> Getting in touch</h2>
+  <p>
+    If you have any questions about your privacy or this policy, we'd love to hear from you. Email us
+    anytime at <a href="mailto:hello@meetrosie.app">hello@meetrosie.app</a>.
+  </p>
+</main>
+
+<footer>
+  <a href="/" class="backlink">← Back to Rosie</a><br>
+  © 2026 Rosie. Made with care for families everywhere.
+</footer>
+
+</body>
+</html>
