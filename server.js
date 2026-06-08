@@ -20,6 +20,10 @@ function loadDB() {
 }
 function saveDB(db) { fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2)); }
 
+function makeReferralCode() {
+  return 'R' + Math.random().toString(36).slice(2, 8).toUpperCase();
+}
+
 function getUser(deviceId) {
   const db = loadDB();
   if (!db.users[deviceId]) {
@@ -29,8 +33,17 @@ function getUser(deviceId) {
       isPaid: false,
       stripeCustomerId: null,
       stripeSubscriptionId: null,
+      referralCode: makeReferralCode(),
+      referredBy: null,
+      paymentsCount: 0,
+      rewardGranted: false,
       createdAt: new Date().toISOString()
     };
+    saveDB(db);
+  }
+  // Backfill referralCode for users created before this feature
+  if (!db.users[deviceId].referralCode) {
+    db.users[deviceId].referralCode = makeReferralCode();
     saveDB(db);
   }
   return db.users[deviceId];
@@ -41,6 +54,11 @@ function updateUser(deviceId, fields) {
   db.users[deviceId] = { ...db.users[deviceId], ...fields };
   saveDB(db);
   return db.users[deviceId];
+}
+
+function findUserByCode(code) {
+  const db = loadDB();
+  return Object.values(db.users).find(u => u.referralCode === code) || null;
 }
 
 // ── Middleware ────────────────────────────────────────────────────────
@@ -68,6 +86,14 @@ app.post('/status', (req, res) => {
     questionsRemaining: user.isPaid ? 999 : Math.max(0, FREE_QUESTIONS - user.questionsUsed),
     isPaid: user.isPaid
   });
+});
+
+// Return this user's referral code (for sharing)
+app.post('/referral-code', (req, res) => {
+  const { deviceId } = req.body;
+  if (!deviceId) return res.status(400).json({ error: 'deviceId required' });
+  const user = getUser(deviceId);
+  res.json({ referralCode: user.referralCode });
 });
 
 app.post('/ask', async (req, res) => {
@@ -100,17 +126,31 @@ app.post('/ask', async (req, res) => {
 });
 
 app.post('/subscribe', async (req, res) => {
-  const { deviceId } = req.body;
+  const { deviceId, referralCode } = req.body;
   if (!deviceId) return res.status(400).json({ error: 'deviceId required' });
   try {
     const user = getUser(deviceId);
+
+    // Store who referred them — only if valid, not themselves, not already referred
+    let validReferral = false;
+    if (referralCode && !user.referredBy) {
+      const referrer = findUserByCode(referralCode.toUpperCase());
+      if (referrer && referrer.deviceId !== deviceId) {
+        updateUser(deviceId, { referredBy: referrer.deviceId });
+        validReferral = true;
+      }
+    } else if (user.referredBy) {
+      validReferral = true; // already had a referral stored
+    }
+
     let customerId = user.stripeCustomerId;
     if (!customerId) {
       const customer = await stripe.customers.create({ metadata: { deviceId } });
       customerId = customer.id;
       updateUser(deviceId, { stripeCustomerId: customerId });
     }
-    const session = await stripe.checkout.sessions.create({
+
+    const sessionConfig = {
       customer: customerId,
       payment_method_types: ['card'],
       mode: 'subscription',
@@ -119,7 +159,16 @@ app.post('/subscribe', async (req, res) => {
       success_url: `${process.env.APP_URL}/success?session_id={CHECKOUT_SESSION_ID}&deviceId=${deviceId}`,
       cancel_url: `${process.env.APP_URL}/cancel`,
       metadata: { deviceId }
-    });
+    };
+
+    // Give the referred person their first month free via coupon
+    if (validReferral && process.env.REFERRAL_COUPON_ID) {
+      sessionConfig.discounts = [{ coupon: process.env.REFERRAL_COUPON_ID }];
+      // Note: can't use allow_promotion_codes with discounts, so remove it
+      delete sessionConfig.allow_promotion_codes;
+    }
+
+    const session = await stripe.checkout.sessions.create(sessionConfig);
     res.json({ url: session.url });
   } catch (err) {
     console.error('Stripe error:', err);
@@ -166,18 +215,47 @@ app.post('/webhook', express.raw({ type: 'application/json' }), async (req, res)
   } catch (err) {
     return res.status(400).send(`Webhook error: ${err.message}`);
   }
+
   if (event.type === 'customer.subscription.deleted') {
     const sub = event.data.object;
     const db = loadDB();
     const user = Object.values(db.users).find(u => u.stripeSubscriptionId === sub.id);
     if (user) updateUser(user.deviceId, { isPaid: false, stripeSubscriptionId: null });
   }
+
   if (event.type === 'invoice.payment_failed') {
     const invoice = event.data.object;
     const db = loadDB();
     const user = Object.values(db.users).find(u => u.stripeCustomerId === invoice.customer);
     if (user) updateUser(user.deviceId, { isPaid: false });
   }
+
+  // Reward the referrer when the referred person makes their SECOND payment
+  if (event.type === 'invoice.payment_succeeded') {
+    const invoice = event.data.object;
+    const db = loadDB();
+    const user = Object.values(db.users).find(u => u.stripeCustomerId === invoice.customer);
+    if (user) {
+      const newCount = (user.paymentsCount || 0) + 1;
+      updateUser(user.deviceId, { paymentsCount: newCount });
+
+      if (newCount === 2 && user.referredBy && !user.rewardGranted) {
+        const referrer = db.users[user.referredBy];
+        if (referrer && referrer.stripeCustomerId) {
+          try {
+            await stripe.customers.createBalanceTransaction(referrer.stripeCustomerId, {
+              amount: -799,
+              currency: 'usd',
+              description: 'Referral reward — free month for referring a friend'
+            });
+            updateUser(user.deviceId, { rewardGranted: true });
+            console.log('Referral reward granted to ' + referrer.deviceId);
+          } catch(e) { console.error('Failed to grant referral reward:', e); }
+        }
+      }
+    }
+  }
+
   res.json({ received: true });
 });
 
