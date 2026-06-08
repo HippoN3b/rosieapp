@@ -130,6 +130,14 @@
     .features, .testi, .cta { padding: 70px 20px; }
     .cta-bird{display: none;}
   }
+  .referral { padding: 100px 40px; background: white; }
+  .referral-inner { max-width: 1100px; margin: 0 auto; }
+  .ref-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .ref-step { background: #FFF5F7; border-radius: 20px; padding: 32px 28px; text-align: center; border: 2px solid #FFE0E8; }
+  .ref-num { width: 52px; height: 52px; border-radius: 50%; background: #D4788A; color: white; font-size: 22px; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+  .ref-step h3 { font-size: 18px; font-weight: 800; color: #1a1a2e; margin-bottom: 10px; }
+  .ref-step p { font-size: 14px; color: #666; line-height: 1.6; font-weight: 600; }
+  @media (max-width:768px) { .referral { padding: 70px 20px; } }
 </style>
 </head>
 <body>
@@ -138,6 +146,7 @@
   <div class="logo"><img src="rosie-idle.png" alt="Rosie"/> Rosie</div>
   <div class="nav-right">
     <a href="#features">Features</a>
+    <a href="#referral">Refer a Friend</a>
     <a href="#pricing">Pricing</a>
     <a href="https://github.com/HippoN3b/rosieapp/releases/latest/download/RosieSetup.exe" class="nav-dl">Download Free</a>
   </div>
@@ -188,6 +197,31 @@
       <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">My mother used to call me four times a day with computer questions. Now she just asks Rosie. I get my evenings back!</p><div class="testi-author">Sandra M.</div><div class="testi-role">Daughter, Ohio</div></div>
       <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">I'm 74 years old and Rosie never makes me feel silly for asking. She's always patient and always explains things I can understand.</p><div class="testi-author">Dorothy K.</div><div class="testi-role">Retired teacher, Florida</div></div>
       <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-text">Got this for my dad after he nearly fell for a scam. Now he asks Rosie "is this a scam?" before doing anything. Game changer.</p><div class="testi-author">James T.</div><div class="testi-role">Son, Texas</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="referral" id="referral">
+  <div class="referral-inner">
+    <div class="eyebrow" style="text-align:center;">Give a month, get a month</div>
+    <h2 class="big-title" style="text-align:center;">Share Rosie, earn free months 🎁</h2>
+    <p style="text-align:center; font-size:16px; color:#666; font-weight:600; max-width:600px; margin:0 auto 56px;">Know someone else whose parents could use a little help? Share Rosie and you both win.</p>
+    <div class="ref-steps">
+      <div class="ref-step">
+        <div class="ref-num">1</div>
+        <h3>Share your code</h3>
+        <p>Every subscriber gets a personal referral code, found right in Rosie's settings.</p>
+      </div>
+      <div class="ref-step">
+        <div class="ref-num">2</div>
+        <h3>They get a free month</h3>
+        <p>When a friend signs up with your code, their first month is completely free.</p>
+      </div>
+      <div class="ref-step">
+        <div class="ref-num">3</div>
+        <h3>You get a free month</h3>
+        <p>Once they stay on for their second month, you get a free month too. Refer as many friends as you like!</p>
+      </div>
     </div>
   </div>
 </section>
