@@ -11,7 +11,7 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const FREE_QUESTIONS = 3;
-const DB_FILE = path.join(__dirname, 'data.json');
+const DB_FILE = path.join('/data', 'data.json');
 
 // ── Database ──────────────────────────────────────────────────────────
 function loadDB() {
